@@ -18,7 +18,7 @@ sidebar-avatar: /img/avater.JPG     # use absolute URL, seeing it's used in both
 
 # SNS settings
 RSS: false
-# weibo_username:     哎呦-大力
+ weibo_username:     哎呦-大力
 zhihu_username:     田夯
 github_username:    tian-chengli
 facebook_username:
@@ -57,7 +57,7 @@ kramdown:
 
 # 评论系统
 # Disqus（https://disqus.com/）
-# disqus_username: qiubaiying
+# disqus_username: tian-chengli
 
 # Gitalk
 gitalk:
@@ -74,7 +74,7 @@ gitalk:
 
 # Analytics settings
 # Baidu Analytics
-#ba_track_id:
+ba_track_id:  https://hm.baidu.com/hm.js?3c7463b99dc089f0dabb2834e09ec4b3
 
 # Google Analytics
 #ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
