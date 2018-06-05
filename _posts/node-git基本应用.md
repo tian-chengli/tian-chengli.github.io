@@ -1,0 +1,302 @@
+---
+title: node&&git基本应用
+date: 2018-04-21 04:24:40
+tags:
+---
+
+### node & GIT基础知识
+### 安装node
+- 官网下载，一直下一步，最好下c盘。
+或者：拷贝别人下载好的，
+- 到我的电脑-属性-高级设置-环境变量-path-添加node的安装目录。
+- 验证是否成功:win+R->cmd->node -version,npm -v能出现版本号代表安装成功，不能出现版本号，按照上一步配置环境变量即可。
+### node基础概念
+1.node并不是一门语言，他是一个工具或者一个运行环境基于v8引擎渲染和解析js的。
+- 单线程
+- 无阻赛i/o操作
+- 事件驱动
+...
+之所以把node称为服务器语言是因为node给予操作服务器的能力：我们在服务器端安装node使用js服务器端需要处理的一些事情，最后把写好的js代码交给node环境运行即可
+
+2.在node环境当中把js代码执行
+- repl命令（read-evaluate-print-loop）输入-求值-输出-循环
+- 基于node xxx.js命令执行
+ -  基于node执行我们需要先找到当前文件所在的文件夹，然后再这个目录下打开dos窗口，在窗口执行node xxx.js这样就相当于在node环境下把js文件中的代码执行了
+ -  如何在当前目录中打开dos窗口
+ -  1.基于dos命令中的cd一层层进入
+ -  2.在当前目录地址栏中输入cmd快速在当前目录打开
+ -  3.shift+鼠标右键，在此处打开命令窗口
+
+- 基于wb这类编辑工具直接执行
+
+3.常用DOS命令
+- `ping www.baidu.com -t`
+- 测试网速，然后`Ctrl+c`结束当前运行的操作
+- `exit`：退出当前窗口
+- `ipconfig -all`   ：查看当前电脑的物理地址、IP地址、子网掩码、DNS等信息
+- `cls`；清屏
+- `cd`:进入指定的文件目录，（windows电脑需要先进入对应的磁盘）
+- `cd ../`:返回上级目录
+- `cd .`:当前目录
+- `cd /`:根目录
+- `dir`:查看当前目录下的文件
+- `mkdir`:创建文件夹
+- `copy con xxx.xx`:创建文件并且给文件中输入内容，输入完成后用`Ctrl+c`结束并保存
+- `del xxx.xx`:删除文件
+- `rmdir`:删除文件夹
+
+
+### npm模块管理
+安装完node后基本上自带npm模块管理器
+我们需要一个第三方模块，或者模块插件，或者类库，或者框架，需要提前下载安装才可以使用，百度搜索找到下载地址，然后基于浏览器下载即可（资源比较混乱不好搜索）
+也可以基于npm等第三方包管理器下载（yarn/bower这些都是第三方模块管理器）
+1.npm下载的资源都是在[http://www.npmjs.com/](http://www.npmjs.com/)中下载的
+`npm install xxx`:把资源或者第三方模块下载到当前目录下
+`npm install xxx -g(--global)`:把资源或者第三方模块安装到全局环境下，可以基于命令来操作一些事情
+卸载npm uninstall xxx/xxx -g:从本地或者全局卸载
+> 基于npm安装的一些细节点：
+- 需要联网
+- 下载成功后当前目录中多增加一个node_modules文件夹，在这个文件夹中找到我们安装的模块
+- 一般来说下载下来的内容包括源码和最后供开发者使用的压缩版本。
+
+> 2.解决下载慢的问题
+- 基于npm切换到国内下载源（一般是淘宝镜像）
+ - 首先安装nrm而且是把他安装到全局环境下，因为我们要使用命令。
+ - `npm install nrm -g`
+ - 安装完我们就可以使用nrm命令
+ - `nrm ls `查看当前可用源
+ - `nrm use xxx`使用某个可用源
+- 也可以基于yarn来安装管理
+ - 首先安装yarn，安装到全局，然后基于yarn安装我们需要的模块
+ - ` npm install yarn -g`
+ -  `yarn add xxx`
+ -  `yarn remove xxx`
+ - 基于yarn安装只能安装到本地不能安装到全局
+- 基于cnpm淘宝镜像来处理
+
+> 3.解决安装版本的问题
+- 首先查看当前模块的历史版本信息
+ - `npm view jQuery>jquery.version.json`:把当前模块的历史版本信息输出到具体的某个文件夹（文件名是自己取得）
+ - 安装指定的版本模块
+ - `yarn add jquery@1.11.3:npm` 和yarn都是这样来指定安装具体版本模块
+
+1.bower是从github下载安装
+2.安装less、babel-cli ...
+
+### github
+> 一个提供代码管理的公共平台我们以及众多开发者会把自己的生产的组件、类库、插件、框架等托管到这个平台供别人下载使用和研究
+在github中我们可以创建仓库来管理自己的项目文件，而github支持开发者通过git操作，把本地的项目代码推送到指定的仓库，它还提供静态web页面的发布
+在国内有一个和github类似的网站：coding,和github类似，也是提供代码管理的平台，但资源少。
+
+### git的基础知识
+- git是一个分布式代码版本管理控制系统
+- 记录当前产品代码的所有版本信息（历史修改信息）而且方便快速回退到某一个具体版本，
+- 方便团队协作开发，能够检测代码冲突能够合并代码等
+svn:集中式版本控制系统
+git：分布式版本控制系统
+
+> 分布式和集中式区别：
+[集中式]：想要做历史记录的查看或者备份必须链接到中央处理器才可以（需要联网）
+处理速度没有Git快
+[分布式]：每个开发者本地都是一个单独的仓库，在自己的仓库中就可以完成历史版本的记录和查看（不需要联网）
+Git处理速度更快。
+
+
+
+
+
+### git操作步骤
+步骤：
+1.先在GitHub上创建一个远程仓库
+2.在本地创建一个文件夹初始化git仓库 `git init`
+3.本地仓库和远程仓库关联起来` git remote add origin`[可以自己起名字] 远程仓库的网络地址,移除关联是``git remote remove xxx`
+4.把本地仓库的内容提交到暂存区 `git add .`
+5.把本地仓库的内容以及注释提交到历史区 `git commit -m`'注释内容'
+6.把远程仓库的内容先拉到本地仓库，保持远程仓库和本地仓库同步` git pull origin master --allow-unrelated-histories`
+7.提交到远程仓库` git push origin master `
+
+### 提交本地项目的另外一种方式：
+
+1.`git clone 远程仓库地址 本地仓库名（可以不写）`的方式把远程仓库克隆到本地
+代替了:
+`git init `在本地创建了git仓库
+`git remote add origin [地址] `本地仓库和远程仓库关联了起来
+`git pull origin master`把远程仓库的内容拉取到了本地仓库
+2.进入克隆的本地仓库 cd [本地仓库名]
+3.`git add.`
+4.`git commit -m'注释'`
+5.`git push origin master`提交到远程仓库
+
+
+
+### 提交项目
+登录GitHub
+https://github.com/zfpx/201801JS.git  黏贴到地址栏回车
+点fork按钮，相当于把那个仓库克隆一份到我的仓库
+git clone 刚刚克隆的仓库的地址 把从老师那fork过来的 远程仓库克隆到本地
+cd 201801JS  到当前本地仓库地址
+git add .添加到暂存区
+git commit -m添加到历史区
+git push origin master上传到自己的复制的远程仓库（根目录应该是本地仓库地址）
+
+New pull request发出新请求
+Create pull request  申请并入
+
+主管做的事情merge pull request 或者close pull request
+
+> webstrom关联
+打开有关联通道文件夹，在子目录下创建文件，编辑后，点击菜单栏的VCS中的git->add，再次点击VCS中的git->commit,commit and push ,push.
+
+
+
+
+### Linux操作系统常用命令
+> - `ls`查看当前目录下的文件
+ + `-l`查看详细信息
+ + ` -a`查看隐藏文件
+ + `-la`同时具备以上特定
+- `clear`清屏
+- `cd`目录切换
+ + `cd../`返回上级目录
+ + `cd./`返回当前目录
+ + `cd`/返回根目录
+ + `cd xxx`进入指定文件夹
+ + `cd E:`进入到指定的磁盘
+- `mkdir`创建文件夹
+- `touch` 创建一个空文件
+ + 可以创建无文件名的文件。例如touch .gitignore/touch .babelrc...
+ + 在电脑旁隐藏文件后缀名的情况下。我们不至于创建出1.txt.txt这样重复后缀名的文件。
+- `vi`向指定文件中插入内容例如：vi 1.txt
+ + 首先进入命令窗口模式
+ + 我们先按`i`，进入到插入内容模式
+ + 编辑要写的内容
+ + 按`esc`键，再按`：`键，再按`wq`(保存并退出)
+ + 如果按q!（强制退出，新输入的内容不保存）
+-echo xxx>1.txt  把xxx内容放到1.txt文件中，如果没有这个文件则创建这个文件（新存放的内容会替换原有的内容）
+-echo xxx >>1.txt 新的内容会追加到原有内容的后面
+- `cat`查看文件中的内容
+- `cp`拷贝文件
+- `rm`删除文件
+ - `-r`递归删除（把当前文件夹中的所有的后代元素也都遍历到删除）
+ - `-f`强制删除
+ - `-rf`一旦rf后，没有办法还原回来，所以删除要慎重
+### git配置
+> 安装完成Git后。我们最好先把一些基础信息配置一下
+>`git config -l`查看当前本级Git的配置清单
+>相对比较重要的配置g：user.name/user.email,每一次提交的时候我们需要知道谁提交的。
+>`$git config --global user.name xxx
+>$git config --global user.email xxx `
+>
+```
+切换账号:git config credential.helper ''
+
+保存账号git config credential.helper store
+```
+
+### Git工作原理和流程
+“`git工作流程`”
+一个Git仓库分为三个区域：
+1.工作区：平时写代码的地方。
+2.暂存区：把一些写好的代码暂时存储的地方。
+3.历史区：生成一个个版本记录的地方。
+`"创建Git仓库"`
+在电脑的某一个文件夹中
+1）右键->git bash here ->在窗口执行`git init`.
+2) 在windows dos窗口中执行，还是执行相同的命令执行完成后会在当前电脑指定文件夹中生成一个 .git 文件，证明当前文件夹就是一个本机独立的git版本控制仓库
+一个项目目录下，我们一般会有以下这样的文件
+`.git`:在当前项目中创建git仓库生成的文件（很重要）
+`.idea`:使用WS开发，默认生成的文件，记录WS的一些信息（没用）
+`.gitignore`:我们一般会手动的在当前项目中创建一个后缀名是gitignore的文件，这个文件中记录了每一次git提交时候忽略不管的文件或者文件夹（ws中可以创建这个文件）
+```
+# dependencies
+node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# webStorm
+.idea
+
+
+```
+
+
+`README.md`:这个文件选择性增加，通过这个文件可以对当前的项目进行详细的描述（使用markdown编写）
+在真正的项目中，一般都是需要团队协作开发的，也就是都会存在一个中央远程仓库，而我们操作的步骤如下：
+
+
+我们可以在本地继续开发，如果需要把开发的内容同步到远程仓库上，还是按照之前的老步骤操作即可
+`git add -A `
+`git commit -m’备注信息’ `
+`git push origin master`
+
+
+
+`把工作区中的内容提交到暂存区`
+`git add xxx`把指定的文件提交到暂存区
+`git add./git add -A`把所有修改的文件都提交到暂存区
+`git statu`查看当前工作区中文件的状态。
+显示`红色`还没有提交到暂存区。
+显示`绿色`还没有提交到历史区。
+`把暂存区的内容统一提交到历史区`
+提交到历史区的内容，会生成相关的版本和历史记录，以后如果想回滚到某一次的代码，可以使用git命令迁出对应的版本即可`git commit -m'xxx'`:把暂存区的内容提交到历史区（-m后面的内容都是对本次提交新版本的说明）
+### 把本地的版本代码推送到中央仓库上
+1）让本地仓库和远程仓库建立连接通道
+`git remote add [name:一般都叫做origin] [远程仓库地址]`
+`git remote rm [name]`
+`git remote update [name]`
+`git remote -v`查看当前本地仓库所有的链接通道
+2）把本机仓库代码和版本信息推送（拉取）到远程仓库上
+`git push origin master`推送
+`git pull origin master`拉取
+```
+本地仓库和远程仓库不一致时可以先拉后推
+`git pull origin master --allow-unrelated-histories
+```
+
+
+
+
+
+### 无分支模式下的团队协作
+作为开发者每天来的第一件事或提交代码之前都要先pull一下
+[`如果远程仓库和本地仓库不是同一个文件或同一行代码从冲突`]
+git会自动会依赖于fast-forward模式进行合并
+自动合并后，我们需要重新提交即可git add/git commit/push...
+[`同一个文件的同一行代码冲突`]
+找到冲突的文件，留下自己想要的代码
+不管之前是否commit过，都要重新commit，然后push即可。
+
+### 单独分支管理
+ - 1.每天第一件事就是创建一个dev分支，并且切换到这个分支上
+- 2.正常的开发代码，把每天开发的任务都要先提交到自己的分支上
+- 3.提交到远程仓库上
+把本地自己分支中的内容，合并到本地自己的master分支下
+把本地创建的分支删除（可以不删除，但是有的公司不希望远程出现分支，或者避免开发人员的分支冲突，提交之前都要把自己创建的分支删除掉）
+- 4.和第一种只使用master分支一样了，把本地最新合并的master分支代码，提交到远程仓库的master分支下（冲突合并即可）。
+
+操作分支的基础命令
+`$git branch` 查看现有的分支
+`$git branch xxx`创建一个新的分支
+`$git checkout xxx`切换到某个分支上
+`$git checkout -b xxx`创建一个新分支并且切换到这个分支上
+`$git branch -D xxx`删除某个分支（一定要切换到其他分支上才可以删除当前分支）
+`$git merge xxx `合并分支内容
+`$git log --graph /--oneline`
+在有分支的情况下，可以更清楚查看分支的提交和合并内容
+
+
