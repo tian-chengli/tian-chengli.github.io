@@ -1,7 +1,15 @@
 ---
-title: HTTP报文
-date: 2018-05-24 01:23:49
+layout:     post
+title:      HTTP报文
+subtitle:   HTTP报文
+date:       2016-11-28
+author:     tian-chengli
+header-img: img/post-bg-ios9-web.jpg
+catalog: true
 tags:
+    - HTTP
+    - 
+    -
 ---
 ###  HTTP报文
 > 首部（头）：请求头、响应头、通用头
