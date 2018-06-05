@@ -1,6 +1,6 @@
 # Site settings
 title: tian-chengli Blog
-SEOTitle: 田成力的博客 | BY Blog
+SEOTitle: 田成力的博客 | tian-chengli Blog
 header-img: img/post-bg-desk.jpg
 email: tian.chengli@outlook.com
 description: "funny"
@@ -18,7 +18,7 @@ sidebar-avatar: /img/avater.JPG     # use absolute URL, seeing it's used in both
 
 # SNS settings
 RSS: false
-# weibo_username:     哎呦-大力
+ weibo_username:     哎呦-大力
 zhihu_username:     田夯
 github_username:    tian-chengli
 facebook_username:
@@ -57,16 +57,16 @@ kramdown:
 
 # 评论系统
 # Disqus（https://disqus.com/）
-# disqus_username: qiubaiying
+# disqus_username: tian-chengli
 
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
-  clientID: f2c84e7629bb1446c1a4                            #生成的clientID
-  clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
-  repo: qiubaiying.github.io    #仓库名称
-  owner: qiubaiying    #github用户名
-  admin: qiubaiying
+  clientID: 6ca24c11cc559eff022c                           #生成的clientID
+  clientSecret: 0ee0bb0bb92d4abaed9acc3f6de5933633f1e49e    #生成的clientSecret
+  repo: tian-chengli.github.io    #仓库名称
+  owner: tian-chengli    #github用户名
+  admin: tian-chengli
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
@@ -74,7 +74,7 @@ gitalk:
 
 # Analytics settings
 # Baidu Analytics
-#ba_track_id:
+ba_track_id:  https://hm.baidu.com/hm.js?3c7463b99dc089f0dabb2834e09ec4b3
 
 # Google Analytics
 #ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
